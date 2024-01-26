@@ -1,15 +1,25 @@
 import streamlit as st
+import clarifai
+import clarifai_utils
+import langchain
+import langchain_community
+import openai
 from prompts import instructions_data
 from clarifai_utils.modules.css import ClarifaiStreamlitCSS
-from langchain.llms import OpenAI
+from langchain_community.llms import OpenAI
 from langchain.agents import AgentType, initialize_agent, load_tools
-from langchain.callbacks import StreamlitCallbackHandler
-from langchain.llms import Clarifai
-from langchain import PromptTemplate, LLMChain
+from langchain_community.callbacks import StreamlitCallbackHandler
+from langchain_community.llms import Clarifai
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory, ChatMessageHistory
 from langchain.schema import HumanMessage, AIMessage
 import streamlit.components.v1 as components
+
+st.secrets.load_config("path/to/secrets.toml")
+
+api_key = st.secrets["api_key"]["key"]
 
 st.set_page_config(layout="wide")
 
