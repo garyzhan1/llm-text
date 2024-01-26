@@ -17,10 +17,6 @@ from langchain.memory import ConversationBufferMemory, ChatMessageHistory
 from langchain.schema import HumanMessage, AIMessage
 import streamlit.components.v1 as components
 
-st.secrets.load_config("path/to/secrets.toml")
-
-api_key = st.secrets["api_key"]["key"]
-
 st.set_page_config(layout="wide")
 
 def load_pat():
